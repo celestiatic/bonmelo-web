@@ -1,0 +1,5 @@
+{
+  "verbose": true,
+  "ignore": ["pages/*"],
+  "watch": ["server/", "clients/socket.ts"]
+}

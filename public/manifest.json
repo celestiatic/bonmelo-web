@@ -1,0 +1,16 @@
+{
+  "short_name": "Bonmelo",
+  "name": "Bonmelo Chat",
+  "id": "/",
+  "start_url": "/app",
+  "icons": [
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "background_color": "#1C4ED8",
+  "display": "standalone",
+  "theme_color": "#1C4ED8"
+}

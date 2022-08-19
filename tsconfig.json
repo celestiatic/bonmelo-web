@@ -1,0 +1,59 @@
+{
+  "ts-node": {
+    "require": ["tsconfig-paths/register"]
+  },
+  "compilerOptions": {
+    "target": "ES6",
+    "noImplicitAny": false,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "strictNullChecks": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "baseUrl": ".",
+    "typeRoots": [
+      "node_modules/@types",
+      "constants/declarations"
+    ],
+    "paths": {
+      "@/backend/api": [
+        "../server/clients/apiMapper.ts"
+      ],
+      "@/clients/*": [
+        "clients/*"
+      ],
+      "@/assets/*": [
+        "public/assets/*"
+      ],
+      "@/constants/*": [
+        "constants/*"
+      ],
+      "@/public/*": [
+        "public/*"
+      ],
+      "@/components/*": [
+        "components/*"
+      ],
+      "@/config/*": [
+        "config/*"
+      ],
+      "@/managers/*": [
+        "managers/*"
+      ],
+      "@/server/*": [
+        "server/*"
+      ],
+    },
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/projects/[projectid]/[projectid].tsx", "pages/api/socketio.js", "components/ErrorCatcher.jsx", "pages/_document.js", "constants/development.ts", "constants/customTypings/roundings.js", "server/server.ts", "server/index.js"],
+  "exclude": ["node_modules"]
+}

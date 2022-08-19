@@ -1,0 +1,84 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Users {
+  id              String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  created_at      DateTime? @default(now()) @db.Timestamptz(6)
+  username        String?
+  discriminator   String?
+  activityMessage String?
+  activityStatus  String    @default("online")
+  userid          String?   @unique @db.Uuid
+  lastseen        String
+  themeId         String    @default("light")
+  badges          String[]
+  bannerColor     String    @default("#222323")
+  friends         Json[]
+  avatarId        String?   @unique @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  userSettings    Json      @default("{}")
+}
+
+model Channels {
+  id          String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  created_at  DateTime? @default(now()) @db.Timestamptz(6)
+  type        String?
+  members     String[]  @db.Uuid
+  name        String?
+  description String?
+  created_by  String?   @db.Uuid
+}
+
+model Messages {
+  id         String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  created_at DateTime? @default(now()) @db.Timestamptz(6)
+  content    String?
+  authorid   String?   @db.Uuid
+  embeds     Json[]
+  timestamp  String?
+  channelid  String?   @db.Uuid
+  edited     Boolean   @default(false)
+  visible    Boolean   @default(true)
+}
+
+model Themes {
+  id         String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  created_at DateTime? @default(now()) @db.Timestamptz(6)
+  name       String    @unique
+  themeData  Json      @default("{}")
+  nameId     String?   @unique
+}
+
+model Badges {
+  id            String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  created_at    DateTime? @default(now()) @db.Timestamptz(6)
+  gradientStyle Json?     @default("{\"to\": \"cyan\", \"from\": \"indigo\"}")
+  name          String?   @unique
+  nameId        String?   @unique
+  text          String?
+  description   String?
+  exclusive     Boolean   @default(false)
+}
+
+model Applications {
+  id          String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  created_at  DateTime? @default(now()) @db.Timestamptz(6)
+  name        String?
+  description String?
+  Bots        Bots?
+}
+
+model Bots {
+  id                String        @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  created_at        DateTime?     @default(now()) @db.Timestamptz(6)
+  username          String?
+  discriminator     String?
+  parentApplication String?       @unique @db.Uuid
+  accessToken       String?       @unique(map: "Bots_token_key")
+  Applications      Applications? @relation(fields: [parentApplication], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
