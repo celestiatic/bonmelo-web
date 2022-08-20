@@ -122,6 +122,27 @@
   src: url("../public/assets/fonts/PalmerLake.ttf");
 }
 
+@font-face {
+    font-family: "TTInterface";
+    font-weight: 400;
+    src: url("../public/assets/fonts/TTInterfaces-Regular.otf") format("opentype");
+}
+@font-face {
+    font-family: "TTInterface";
+    font-weight: 500;
+    src: url("../public/assets/fonts/TTInterfaces-Medium.otf") format("opentype");
+}
+@font-face {
+    font-family: "TTInterface";
+    font-weight: 600;
+    src: url("../public/assets/fonts/TTInterfaces-DemiBold.otf") format("opentype");
+}
+@font-face {
+    font-family: "TTInterface";
+    font-weight: 700;
+    src: url("../public/assets/fonts/TTInterfaces-Bold.otf") format("opentype");
+}
+
 html,
 body {
   padding: 0;

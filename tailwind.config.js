@@ -45,6 +45,7 @@ module.exports = {
       Pishel: ["Pishel", "serif"],
       PalmerLake: ["PalmerLake", "serif"],
       Bonfont: ["Bonfont", "serif"],
+      TTInterface: ["TTInterface", "Helvetica", "sans-serif"],
     },
   },
   plugins: [
