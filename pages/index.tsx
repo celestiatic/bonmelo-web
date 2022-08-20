@@ -50,6 +50,10 @@ const Home: NextPage = (props) => {
     }, 500)
   }, [])
 
+  function redirectToApp() {
+    router.push('/app')
+  }
+
 
   return (
     <div className={`h-full w-full min-h-screen bg-[#FAFAFC]`}>
@@ -65,11 +69,11 @@ const Home: NextPage = (props) => {
         </div>
 
         <div id={'topBar_actionButtons'} className={'flex items-center space-x-5'}>
-          <button className={'hover:opacity-70 transition-all'}>
+          <button onClick={() => redirectToApp()} className={'hover:opacity-70 transition-all'}>
             <h1 className={'font-TTInterface font-semibold text-black'}>{'Log in'}</h1>
           </button>
 
-          <button className={'bg-black px-4 md:px-5 py-1.5 rounded-xl flex justify-center items-center shadow-md hover:opacity-80 transition-all'}>
+          <button onClick={() => redirectToApp()} className={'bg-black px-4 md:px-5 py-1.5 rounded-xl flex justify-center items-center shadow-md hover:opacity-80 transition-all'}>
             <h1 className={'font-TTInterface font-semibold text-white text-sm md:text-base'}>{'Register for free'}</h1>
             <ArrowRight
             color={'#fff'}
