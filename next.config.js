@@ -13,10 +13,8 @@ const prodrules = [
 
 ];
 
-const withTM = require("next-transpile-modules")(["bonmelo.ts"]); // pass the modules you would like to see transpiled
-
 /** @type {import('next').NextConfig} */
-const nextConfig = withTM({
+const nextConfig = {
   reactStrictMode: false,
   // swcMinify: true,
   // compress: true,
@@ -58,6 +56,6 @@ const nextConfig = withTM({
 
     return config;
   },
-});
+};
 
 module.exports = nextConfig;

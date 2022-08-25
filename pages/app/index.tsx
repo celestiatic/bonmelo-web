@@ -1,13 +1,9 @@
-import { ClientManager } from '@/clients/manager'
 import LoadingScreen from '@/components/LoadingScreen'
+import { AppProps } from '@/constants/declarations/app'
 import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 const WholeSidebar = dynamic(() => import('@/components/WholeSidebar'))
-
-interface AppProps {
-    clientManager: ClientManager
-}
 
 const App = ({ clientManager }: AppProps) => {
 

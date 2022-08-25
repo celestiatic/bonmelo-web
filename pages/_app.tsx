@@ -5,7 +5,7 @@ import Tracker from '@openreplay/tracker/cjs';
 import { MantineProvider, Notification } from '@mantine/core';
 import { supabase } from '@/clients/supabasePublic';
 import ErrorBoundaryComponent from '@/components/ErrorBoundary';
-import { appVersion, isDev } from '@/constants/development';
+import { appVersion, isDev, serverAddress } from '@/constants/development';
 import Head from 'next/head';
 import { ClientManager } from 'bonmelo.ts'
 import toast, { Toaster } from 'react-hot-toast';
@@ -55,7 +55,8 @@ const App = ({ Component, pageProps }) => {
     type: 'user',
     _devMode: isDev,
     web: true,
-    reduxStore: storeDemo
+    reduxStore: storeDemo,
+    endpoint: serverAddress
   }))
 
   // Register service worker

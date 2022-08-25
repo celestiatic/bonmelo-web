@@ -4,7 +4,7 @@ import { ArrowLeft } from "tabler-icons-react"
 
 export default function AccountSettings(props) {
 
-    const userData = useAppSelector((state) => state.userData)
+    const userData = useAppSelector((state) => state.UsersData)
 
     return (
         <div className={`w-full h-screen bg-white`}>

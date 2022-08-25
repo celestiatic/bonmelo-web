@@ -12,7 +12,7 @@ model Users {
   created_at      DateTime? @default(now()) @db.Timestamptz(6)
   username        String?
   discriminator   String?
-  activityMessage String?
+  activityMessage String?   @default("")
   activityStatus  String    @default("online")
   userid          String?   @unique @db.Uuid
   lastseen        String
@@ -22,16 +22,20 @@ model Users {
   friends         Json[]
   avatarId        String?   @unique @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
   userSettings    Json      @default("{}")
+  onboardingSteps Json[]
+  connections     Json[]
 }
 
 model Channels {
-  id          String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  created_at  DateTime? @default(now()) @db.Timestamptz(6)
-  type        String?
-  members     String[]  @db.Uuid
-  name        String?
-  description String?
-  created_by  String?   @db.Uuid
+  id                String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  created_at        DateTime? @default(now()) @db.Timestamptz(6)
+  type              String?
+  members           String[]  @db.Uuid
+  name              String?
+  description       String?
+  created_by        String?   @db.Uuid
+  bonscore          String    @default("0")
+  lastseentimestamp String?
 }
 
 model Messages {
@@ -81,4 +85,29 @@ model Bots {
   parentApplication String?       @unique @db.Uuid
   accessToken       String?       @unique(map: "Bots_token_key")
   Applications      Applications? @relation(fields: [parentApplication], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model Connections {
+  id              String    @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  created_at      DateTime? @default(now()) @db.Timestamptz(6)
+  userid          String?   @unique @db.Uuid
+  spotifyAuthData Json      @default("{}")
+}
+
+model Settings {
+  id         String    @id @db.Uuid
+  created_at DateTime? @default(now()) @db.Timestamptz(6)
+  userid     String?   @unique @db.Uuid
+}
+
+enum ActivityStatus {
+  online
+  idle
+  donotdisturb
+  invisible
+}
+
+enum ChannelType {
+  directTextChannel
+  groupTextChannel
 }
