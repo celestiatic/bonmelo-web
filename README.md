@@ -1,63 +1,77 @@
+# Turborepo starter with npm
 
----
+This is an official starter turborepo.
 
-# Bonmelo Web
+## What's inside?
 
-[Bonmelo Web](https://chat.bonmelo.com) is an open source chat platform alternative. We are looking forward to building the future of chatting, all features jampacked in one.
+This turborepo uses [npm](https://www.npmjs.com/) as a package manager. It includes the following packages/apps:
 
-- To see what we are currently working on, feel free to access the [Bonmelo To-do board](https://github.com/orgs/celestiatic/projects/2)
+### Apps and Packages
 
-<!-- ## Documentation
+- `docs`: a [Next.js](https://nextjs.org) app
+- `web`: another [Next.js](https://nextjs.org) app
+- `ui`: a stub React component library shared by both `web` and `docs` applications
+- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `tsconfig`: `tsconfig.json`s used throughout the monorepo
 
-For full documentation, visit [docs.bonmelo.com](https://docs.bonmelo.com)
+Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-To see how to Contribute, visit [Getting Started](./DEVELOPERS.md) -->
+### Utilities
 
-## Community & Support
+This turborepo has some additional tools already setup for you:
 
-- [Community Forum](https://github.com/celestiatic/bonmelo-web/discussions). Best for: help with the platform, discussion about database best practices.
-- [GitHub Issues](https://github.com/celestiatic/bonmelo-web/issues). Best for: bugs and errors you encounter using Bonmelo Web.
-- [Discord](https://discord.gg/K5RWEredS5). Best for: sharing your moments and hanging out with the community.
+- [TypeScript](https://www.typescriptlang.org/) for static type checking
+- [ESLint](https://eslint.org/) for code linting
+- [Prettier](https://prettier.io) for code formatting
 
-## Status
+## Setup
 
-- [x] Private Alpha: We are testing Bonmelo with a closed set of private testers
-- [ ] Public Alpha: Anyone can sign up over at [chat.bonmelo.com](https://chat.bonmelo.com). Relax though, expect bugs and hiccups.
-- [ ] Public Beta: Stable enough for most non-enterprise use-cases
-- [ ] Public: Fully ready and operational, even for enterprise use-cases
+This repository is used in the `npx create-turbo@latest` command, and selected when choosing which package manager you wish to use with your monorepo (npm).
 
-We are currently in Private Alpha. Watch "releases" of this repo to get notified of major updates.
+### Build
 
----
+To build all apps and packages, run the following command:
 
-## How it works
+```
+cd my-turborepo
+npm run build
+```
 
-Bonmelo is a future-ready feature-packed chatting platform. Our aim is to give users a fun and easy experience using Bonmelo.
+### Develop
 
-**Architecture**
+To develop all apps and packages, run the following command:
 
-Bonmelo is a [hosted platform](https://chat.bonmelo.com). You can sign up and start using Bonmelo without doing anything extra.
-You can also [self-host bonmelo](https://docs.bonmelo.com/guides/hosting/overview) and [develop locally](https://docs.bonmelo.com/guides/local-development).
-Most of Bonmelo is built on top of [Supabase](https://supabase.com).
+```
+cd my-turborepo
+npm run dev
+```
 
-- [PostgreSQL](https://www.postgresql.org/) is an object-relational database system with over 30 years of active development that has earned it a strong reputation for reliability, feature robustness, and performance.
-- [Supabase Auth](https://supabase.com/auth) is a complete User Management system that works without any additional tools.
-- [Supabase Storage](https://supabase.com/storage) is an open source Object store with unlimited scalability, for any file type.
+### Remote Caching
 
-#### Client libraries
+Turborepo can use a technique known as [Remote Caching](https://turborepo.org/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
 
-Our approach for client libraries is modular. Each sub-library is a standalone implementation for a single external system. This is one of the ways we support existing tools.
+By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
 
-**⚡️ Official ⚡️**
-- [Bonmelo.js](https://github.com/celestiatic/bonmelo.ts) - a ready-to-use typescript-based client for both javascript and typescript.
+```
+cd my-turborepo
+npx turbo login
+```
 
-**💚 Community 💚**
+This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
 
-- [Bonmelo.js](https://github.com/celestiatic/bonmelo.ts) - a ready-to-use typescript-based client for both javascript and typescript.
-<br></br>
+Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your turborepo:
 
----
+```
+npx turbo link
+```
 
-## Sponsors
+## Useful Links
 
-[![New Sponsor](https://user-images.githubusercontent.com/10214025/90518111-e74bbb00-e198-11ea-8f88-c9e3c1aa4b5b.png)](https://github.com/sponsors/celestiatic)
+Learn more about the power of Turborepo:
+
+- [Pipelines](https://turborepo.org/docs/core-concepts/pipelines)
+- [Caching](https://turborepo.org/docs/core-concepts/caching)
+- [Remote Caching](https://turborepo.org/docs/core-concepts/remote-caching)
+- [Scoped Tasks](https://turborepo.org/docs/core-concepts/scopes)
+- [Configuration Options](https://turborepo.org/docs/reference/configuration)
+- [CLI Usage](https://turborepo.org/docs/reference/command-line-reference)
