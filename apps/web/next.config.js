@@ -1,3 +1,5 @@
+const withTM = require("next-transpile-modules")(["bonmelo.js"]); // pass the modules you would like to see transpiled
+
 const prodplugins = [
   // new WebpackObfuscator({
   //         controlFlowFlattening: true,
@@ -8,13 +10,11 @@ const prodplugins = [
   //         selfDefending: true,
   //         stringArrayEncoding: ['rc4', 'base64'],
   //   })
-]
-const prodrules = [
-
 ];
+const prodrules = [];
 
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig = withTM({
   reactStrictMode: true,
   // swcMinify: true,
   // compress: true,
@@ -56,6 +56,6 @@ const nextConfig = {
 
     return config;
   },
-};
+});
 
 module.exports = nextConfig;
