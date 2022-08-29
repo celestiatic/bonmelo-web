@@ -24,7 +24,7 @@ export default function ConnectionsSetting() {
     ]
 
     return (
-        <div className={`w-full h-screen bg-primaryBackground dark:bg-primaryBackgroundDark`}>
+        <div className={`w-full h-screen bg-primaryBackground dark:bg-primaryBackgroundDark pt-16`}>
             <SettingsTopbar
                 title={'Connections'}
                 description={'Connect and manage your accounts to unlock special Bonmelo integrations'}

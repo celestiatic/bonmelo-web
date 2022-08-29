@@ -6,7 +6,6 @@ import { useRouter } from 'next/router'
 import { supabase } from '@/clients/supabasePublic'
 import qrCode from 'qrcode'
 import { PasswordInput } from '@mantine/core'
-import { NextSeo } from 'next-seo'
 
 export default function Auth(props) {
 
@@ -74,9 +73,6 @@ export default function Auth(props) {
 
     return (
         <div className={`h-full min-h-screen w-full transition-all`}>
-            <NextSeo
-                title={'Bonmelo'}
-            />
             <Transition appear show={dialogIsOpen} as={Fragment}>
                 <Dialog as="div" className="relative z-10" onClose={dialogDismissable ? closeModal : (() => null)}>
                     <Transition.Child

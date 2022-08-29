@@ -61,6 +61,7 @@
     "metascraper-title": "^5.30.3",
     "metascraper-url": "^5.30.3",
     "next": "^12.2.5",
+    "next-api-handler": "^0.3.1",
     "next-connect": "^0.12.2",
     "next-transpile-modules": "^9.0.0",
     "nextjs-cors": "^2.1.1",

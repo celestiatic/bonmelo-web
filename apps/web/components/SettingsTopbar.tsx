@@ -6,7 +6,7 @@ export function SettingsTopbar({ title, description, Icon }) {
     const router = useRouter()
 
     return (
-        <div id="topBar" className={`w-full flex px-5 py-3 shadow-sm bg-primaryBackground dark:bg-primaryBackgroundDark`}>
+        <div id="topBar" className={`w-full fixed top-0 flex px-5 py-3 shadow-sm bg-primaryBackground dark:bg-primaryBackgroundDark`}>
             <div id="topBar_left" className={`flex items-center`}>
                 <button onClick={() => router.back()} className={`hover:opacity-50 transition-all`}>
                     <Icon

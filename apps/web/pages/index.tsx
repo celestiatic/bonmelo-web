@@ -14,8 +14,6 @@ const Home: NextPage = (props) => {
 
   const router = useRouter()
   useEffect(() => {
-    router.prefetch('/app')
-
     // Animations
     setTimeout(() => {
       const typewriter = new Typewriter('#heroText1', {
@@ -48,7 +46,7 @@ const Home: NextPage = (props) => {
   }, [])
 
   function redirectToApp() {
-    router.push('/app')
+    window.location.href = '/app'
   }
 
 

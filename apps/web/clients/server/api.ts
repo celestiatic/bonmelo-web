@@ -5,7 +5,7 @@ import { TypeChannels, TypeUsers, UserMappingFilter } from '@/clients/server/api
 import { prismaClient } from "@/clients/server/prisma";
 import { Bots, Channels, prisma, Users } from "@prisma/client";
 import NextCors from "nextjs-cors";
-import * as dev from '@/constants/development'
+import { BadRequestException } from "next-api-handler";
 
 export async function middleware(
   req: NextApiRequest,
@@ -81,7 +81,6 @@ export function rejectHandler(
   }
 ) {
   const finalobj = {
-    success: false,
     server: {
       version: serverVersion,
     },
@@ -92,8 +91,8 @@ export function rejectHandler(
       devError: error,
     })
   };
-  res.status(status).send(finalobj);
-  return true;
+  if (res) res.status(status).send(finalobj);
+  return new BadRequestException(JSON.stringify(finalobj));
 }
 
 interface Resolvation {
@@ -107,16 +106,15 @@ export function resolveHandler(
   { status = 200, code = "resolved/unknown", data = {} }: Resolvation
 ) {
   const finalobj = {
-    success: true,
     server: {
       version: serverVersion,
     },
     status: status,
-    code: code,
+    responseCode: code,
     data: data,
   };
-  res.status(status).send(finalobj);
-  return true;
+  if (res) res.status(status).send(finalobj);
+  return finalobj;
 }
 
 // export async function _getUserData(accessToken) {

@@ -127,9 +127,8 @@ export default function ChannelView({ clientManager }:AppProps) {
             componentName={'DirectChannelView'}
         >
             <Head>
-                <title>{channelData?.name}</title>
+                <title>{channelData?.name || 'Bonmelo'}</title>
             </Head>
-            <LoadingScreen>
                 <div className={`h-screen max-h-screen w-full bg-gradient-to-br bg-white text-white`}>
                     <div className={`w-full h-full font-Pishel`}>
                         <div className={`w-full h-full flex`}>
@@ -497,7 +496,6 @@ export default function ChannelView({ clientManager }:AppProps) {
                         </div>
                     </div>
                 </div>
-            </LoadingScreen>
         </ErrorBoundaryComponent>
     )
 }

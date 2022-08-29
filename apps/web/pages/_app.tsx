@@ -123,7 +123,7 @@ const App = ({ Component, pageProps }) => {
     }
 
     const sessionData = supabase.auth.session()
-    clientManager.login(sessionData?.access_token as string)
+    if (sessionData?.access_token) clientManager.login(sessionData?.access_token as string)
 
       supabase.auth.onAuthStateChange(async (event, session) => {
       console.log('authEventDataChange', event, session)

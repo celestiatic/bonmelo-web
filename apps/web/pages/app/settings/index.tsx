@@ -58,7 +58,7 @@ function AccountSettings({ clientManager }:AppProps) {
             Icon={ArrowLeft}
             />
 
-            <div id="mainContent" className={`w-full h-fit py-5 px-5 flex justify-center`}>
+            <div id="mainContent" className={`w-full h-fit py-5 px-5 flex justify-center pt-16`}>
                 <div id="mainContent_rewrap1" className={`h-fit w-full max-w-[1100px]`}>
                     <div id="overview" className={`w-full h-20 flex items-center py-2 px-3`}>
                         <div id="overview_left" className={`w-full h-full flex items-center`}>

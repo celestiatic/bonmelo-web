@@ -12,26 +12,39 @@ function LoadingScreen({ children }) {
     // const appReady = false
     const loadingAnimationControl = useAnimation()
     const contentAnimationControl = useAnimation()
-    const [hidden, setHidden] = useState(true)
+    const [loadingHidden, setLoadingHidden] = useState(false)
+
+    function hideLoadingScreen() {
+        setLoadingHidden(true)
+        loadingAnimationControl.set({
+            opacity: 0
+        })
+        contentAnimationControl.set({
+            opacity: 1,
+            scale: 1
+        })
+    }
+
+    useEffect(() => {
+        if (!router?.isReady) return
+
+        if (!router.route.includes('/app')) {
+            hideLoadingScreen()
+        }
+    }, [router?.isReady])
     
     useEffect(() => {
-        if (!router?.asPath.includes('/app')) {
-            setHidden(true)
-            return
-        }
         if (appReady == true) {
             loadingAnimationControl.start({
                 opacity: 0
             }).then(() => {
-                setHidden(true)
-
+                setLoadingHidden(true)
                 contentAnimationControl.start({
                     opacity: 1,
                     scale: 1
                 })
             })
         } else {
-            setHidden(false)
             loadingAnimationControl.start({
                 opacity: 1
             })
@@ -42,7 +55,7 @@ function LoadingScreen({ children }) {
     return (
         <>
             <motion.div
-                className={`fixed h-full min-h-screen w-full bg-white text-white z-[1000] ${hidden ? 'hidden' : ''}`}
+                className={`fixed h-full min-h-screen w-full bg-white text-white z-[1000] ${loadingHidden ? 'hidden' : ''}`}
                 animate={loadingAnimationControl}
                 transition={{ duration: 0.5, ease: 'easeInOut' }}
             >

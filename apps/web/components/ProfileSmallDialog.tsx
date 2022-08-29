@@ -21,7 +21,7 @@ export default function ProfileSmallDialog({ control, user }) {
     }, [currentUserActivity])
 
     return (
-        <div className={'overflow-hidden'}>
+        <div className={''}>
             <Menu
                 className={`flex items-center`}
                 placement={'start'}
