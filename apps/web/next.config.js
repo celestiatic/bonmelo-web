@@ -16,12 +16,12 @@ const prodrules = [
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
-  compress: true,
+  // swcMinify: true,
+  // compress: true,
   experimental: {
-    runtime: "experimental-edge",
-    serverComponents: true,
-    workerThreads: true,
+    // runtime: "experimental-edge",
+    // serverComponents: true,
+    // workerThreads: true,
     // optimizeCss: true,
   },
   typescript: {
